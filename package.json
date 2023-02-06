@@ -1,0 +1,57 @@
+{
+  "name": "normalize-gitlab-hooks",
+  "version": "0.1.0",
+  "description": "normalize-gitlab-hooks",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "nodemon",
+    "compile": "tsc --outDir lib",
+    "lint": "eslint src/**/*.ts",
+    "prettier": "prettier src/**/*.ts --write",
+    "test": "jest ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts}": [
+      "yarn lint",
+      "yarn test",
+      "yarn prettier",
+      "yarn compile",
+      "git add ."
+    ]
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "preset": "ts-jest"
+  },
+  "author": {
+    "name": "zenxds"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/user/repo.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.0.2",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "eslint": "^5.12.0",
+    "eslint-config-prettier": "^4.3.0",
+    "husky": "^1.3.1",
+    "jest": "^24.8.0",
+    "lint-staged": "^8.1.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.17.1",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  }
+}
